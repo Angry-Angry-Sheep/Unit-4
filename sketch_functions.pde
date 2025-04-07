@@ -1,50 +1,32 @@
 void setup() {
-  size(400, 400);
-  background(255);
+  size(800, 400);
+  background(135, 206, 235);
 
-  drawRobotFace(200, 200, 150);
-  drawRobotFace(300, 300, 250);
+  drawGround();
+
+  drawHouse(100, 250, 100, 100);
+  drawHouse(250, 230, 120, 120);
+  drawHouse(420, 240, 90, 90);
+  drawHouse(560, 250, 110, 100);
+  drawHouse(680, 235, 100, 110);
 }
 
-void drawRobotFace(float x, float y, float size) {
-
-  drawHead(x, y, size);
-
-  drawEyes(x, y, size);
-
-  drawNose(x, y, size);
-
-  drawMouth(x, y, size);
+void drawGround() {
+  fill(34, 139, 34);
+  rect(0, height * 2 / 3, width, height / 3);
 }
 
-void drawHead(float x, float y, float size) {
-  fill(180);
-  stroke(0);
-  ellipse(x, y, size, size);
-}
+void drawHouse(float x, float y, float w, float h) {
+  fill(210, 180, 140);
+  rect(x, y, w, h);
 
-void drawEyes(float x, float y, float size) {
-  float eyeSize = size / 6;
-  float eyeOffset = size / 4;
-  
-  fill(0);
-  ellipse(x - eyeOffset, y - eyeOffset, eyeSize, eyeSize);  // Left eye
-  ellipse(x + eyeOffset, y - eyeOffset, eyeSize, eyeSize);  // Right eye
-}
+  fill(139, 69, 19);
+  triangle(x, y, x + w / 2, y - h / 2, x + w, y);
 
-void drawNose(float x, float y, float size) {
-  float noseWidth = size / 8;
-  float noseHeight = size / 10;
-  
-  fill(0);
-  triangle(x - noseWidth / 2, y, x + noseWidth / 2, y, x, y + noseHeight);
-}
+  fill(101, 67, 33);
+  rect(x + w / 3, y + h / 2, w / 4, h / 2);
 
-void drawMouth(float x, float y, float size) {
-  float mouthWidth = size / 2;
-  float mouthHeight = size / 10;
-  
-  noFill();
-  stroke(0);
-  arc(x, y + size / 4, mouthWidth, mouthHeight, 0, PI);
+  fill(173, 216, 230);
+  rect(x + 10, y + 20, 20, 20);
+  rect(x + w - 30, y + 20, 20, 20);
 }
